@@ -1,0 +1,55 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    database0:
+      url: jdbc:mysql://localhost:3306/test?characterEncoding=utf8&serverTimezone=UTC
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      databaseName: test
+    database1:
+      url: jdbc:mysql://localhost:3306/test1?characterEncoding=utf8&serverTimezone=UTC
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      databaseName: test1
+  devtools:
+    remote:
+      restart:
+        enabled: false
+
+#  jpa:
+#    database: mysql
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: none
+
+  dubbo:
+    application:
+      name: framework_service
+    registry:
+      address: zookeeper://127.0.0.1:2181
+    protocol:
+      port: 20880
+      name: dubbo
+    scan: com.fuxinyu
+    consumer:
+      timeout: 1000
+      check: true
+      retries: 0
+
+#activeMq
+activemq:
+  broker-url: tcp://127.0.0.1:61616
+  password: admin
+  in-memory: false
+  user: admin
+
+#mybatis
+mybatis:
+  mapper-locations: classpath*:/daos/**/*.xml   #把xml文件放在com.XX.mapper.*中可能会出现找到的问题，这里把他放在resource下的mapper中
+  #实体扫描，多个package用逗号或者分号分隔
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false

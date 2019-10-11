@@ -1,0 +1,67 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.fuxinyu.config.fenkufenbiao.Database0Config",
+      "name": "spring.datasource.database0",
+      "type": "com.fuxinyu.config.fenkufenbiao.Database0Config"
+    },
+    {
+      "sourceType": "com.fuxinyu.config.fenkufenbiao.Database1Config",
+      "name": "spring.datasource.database1",
+      "type": "com.fuxinyu.config.fenkufenbiao.Database1Config"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.fuxinyu.config.fenkufenbiao.Database0Config",
+      "name": "spring.datasource.database0.database-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuxinyu.config.fenkufenbiao.Database0Config",
+      "name": "spring.datasource.database0.driver-class-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuxinyu.config.fenkufenbiao.Database0Config",
+      "name": "spring.datasource.database0.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuxinyu.config.fenkufenbiao.Database0Config",
+      "name": "spring.datasource.database0.url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuxinyu.config.fenkufenbiao.Database0Config",
+      "name": "spring.datasource.database0.username",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuxinyu.config.fenkufenbiao.Database1Config",
+      "name": "spring.datasource.database1.database-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuxinyu.config.fenkufenbiao.Database1Config",
+      "name": "spring.datasource.database1.driver-class-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuxinyu.config.fenkufenbiao.Database1Config",
+      "name": "spring.datasource.database1.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuxinyu.config.fenkufenbiao.Database1Config",
+      "name": "spring.datasource.database1.url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.fuxinyu.config.fenkufenbiao.Database1Config",
+      "name": "spring.datasource.database1.username",
+      "type": "java.lang.String"
+    }
+  ]
+}

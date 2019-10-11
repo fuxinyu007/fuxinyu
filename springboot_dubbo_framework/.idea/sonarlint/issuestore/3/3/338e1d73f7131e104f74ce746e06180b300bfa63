@@ -1,0 +1,9 @@
+
+ssquid:UselessImportCheck"HRemove this unused import 'com.fuxinyu.service.login.IUserLoginService'.(õòˆó8“ëÞ‡Ø-
+Fsquid:S11480"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8°ÈÖÿ×-
+asquid:S37529">Add a "method" parameter to this "@RequestMapping" annotation.(¨Ò„íþÿÿÿÿ8°ÈÖÿ×-
+isquid:CommentedOutCodeLine*"<This block of commented-out lines of code should be removed.(»ÞÌ8°ÈÖÿ×-
+[
+squid:S106;"9Replace this use of System.out or System.err by a logger.(Ì©ªôüÿÿÿÿ8õäÒ‹Ø-
+Fsquid:S1148-"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8°ÈÖÿ×-
+\squid:S3752">Add a "method" parameter to this "@RequestMapping" annotation.(ô¸èÉ8™¢Ôÿ×-

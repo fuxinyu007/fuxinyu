@@ -1,0 +1,1292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3ecb7321-beef-474a-98c4-98ebc6840891" name="Default" comment="springboot2_mybatis_cascade" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/springboot_learn$SpringbootBannerApplication.ic" NAME="SpringbootBannerApplication Coverage Results" MODIFIED="1525091278267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="BpmnFile" />
+        <option value="FxmlFile" />
+        <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>package com\.dalaoyang\.swagger\;\n\nimport com\.dalaoyang\.model\.User\;\nimport com\.dalaoyang\.repository\.UserRepository\;\nimport io\.swagger\.annotations\.\*\;\nimport org\.springframework\.beans\.factory\.annotation\.Autowired\;\nimport org\.springframework\.web\.bind\.annotation\.\*\;\n\nimport java\.util\.List\;\n\n\/\*\*\n \* \@author dalaoyang\n \* \@Description\n \* \@project springboot_learn\n \* \@package com\.dalaoyang\.swagger\n \* \@email yangyang\@dalaoyang\.cn\n \* \@date 2018\/4\/9\n \*\/\n    \@RestController\n    \@RequestMapping\(value\=\&quot;\/users\&quot;\)\n    \@Api\(value\=\&quot;用户操作接口\&quot;\,tags\=\{\&quot;用户操作接口\&quot;\}\)\n    public class UserSwagger \{\n\n        \@Autowired\n        UserRepository userRepository\;\n\n        \@ApiOperation\(value\=\&quot;获取用户详细信息\&quot;\, notes\=\&quot;根据用户的id来获取用户详细信息\&quot;\)\n        \@ApiImplicitParam\(name \= \&quot;id\&quot;\, value \= \&quot;用户ID\&quot;\, required \= true\,paramType \= \&quot;query\&quot;\, dataType \= \&quot;Integer\&quot;\)\n        \@GetMapping\(value\=\&quot;\/findById\&quot;\)\n        public User findById\(\@RequestParam\(value \= \&quot;id\&quot;\)int id\)\{\n            User user \= userRepository\.findById\(id\)\;\n            return user\;\n        \}\n\n        \@ApiOperation\(value\=\&quot;获取用户列表\&quot;\, notes\=\&quot;获取用户列表\&quot;\)\n        \@GetMapping\(value\=\&quot;\/getUserList\&quot;\)\n        public List getUserList\(\)\{\n            return userRepository\.findAll\(\)\;\n        \}\n\n\n        \@ApiOperation\(value\=\&quot;保存用户\&quot;\, notes\=\&quot;保存用户\&quot;\)\n        \@PostMapping\(value\=\&quot;\/saveUser\&quot;\)\n        public String saveUser\(\@RequestBody \@ApiParam\(name\=\&quot;用户对象\&quot;\,value\=\&quot;传入json格式\&quot;\,required\=true\) User user\)\{\n            userRepository\.save\(user\)\;\n            return \&quot;success\!\&quot;\;\n        \}\n\n        \@ApiOperation\(value\=\&quot;修改用户\&quot;\, notes\=\&quot;修改用户\&quot;\)\n        \@ApiImplicitParams\(\{\n                \@ApiImplicitParam\(name\=\&quot;id\&quot;\,value\=\&quot;主键id\&quot;\,required\=true\,paramType\=\&quot;query\&quot;\,dataType\=\&quot;Integer\&quot;\)\,\n                \@ApiImplicitParam\(name\=\&quot;username\&quot;\,value\=\&quot;用户名称\&quot;\,required\=true\,paramType\=\&quot;query\&quot;\,dataType \= \&quot;String\&quot;\)\,\n                \@ApiImplicitParam\(name\=\&quot;password\&quot;\,value\=\&quot;用户密码\&quot;\,required\=true\,paramType\=\&quot;query\&quot;\,dataType \= \&quot;String\&quot;\)\n        \}\)\n        \@GetMapping\(value\=\&quot;\/updateUser\&quot;\)\n        public String updateUser\(\@RequestParam\(value \= \&quot;id\&quot;\)int id\,\@RequestParam\(value \= \&quot;username\&quot;\)String username\,\n                                 \@RequestParam\(value \= \&quot;password\&quot;\)String password\)\{\n            User user \= new User\(id\, username\, password\)\;\n            userRepository\.save\(user\)\;\n            return \&quot;success\!\&quot;\;\n        \}\n\n\n        \@ApiOperation\(value\=\&quot;删除用户\&quot;\, notes\=\&quot;根据用户的id来删除用户\&quot;\)\n        \@ApiImplicitParam\(name \= \&quot;id\&quot;\, value \= \&quot;用户ID\&quot;\, required \= true\,paramType \= \&quot;query\&quot;\, dataType \= \&quot;Integer\&quot;\)\n        \@DeleteMapping\(value\=\&quot;\/deleteUserById\&quot;\)\n        public String deleteUserById\(\@RequestParam\(value \= \&quot;id\&quot;\)int id\)\{\n            User user \= userRepository\.findById\(id\)\;\n            userRepository\.delete\(user\)\;\n            return \&quot;success\!\&quot;\;\n        \}\n\n    \}\n</find>
+      <find>configureGlobal</find>
+      <find>doGetAuthorizationInfo</find>
+      <find>chinese</find>
+      <find>getUserList</find>
+      <find>updateUserByUsername</find>
+      <find>@Value</find>
+      <find>createDataSource</find>
+      <find>spring.</find>
+      <find>datasource</find>
+      <find>MasterSlaveRuleConfiguration</find>
+      <find>regCenter.serverList</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\maven\resposity" />
+        <option name="mavenHome" value="D:/maven/apache-maven-3.6.1" />
+        <option name="userSettingsFile" value="D:\maven\apache-maven-3.6.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="1.8" />
+  </component>
+  <component name="ProjectId" id="1QVfqvED8vppeSNebP23B8QZD99" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="pom&#9;FILE&#9;file:///Users/dalaoyang/Demo/springboot_learn/springboot_mybatis_pagehelper/pom.xml&#10;shiro&#9;FILE&#9;file:///Users/dalaoyang/Demo/springboot_learn/springboot_shiro/src/main/java/com/dalaoyang/config/ShiroConfig.java&#10;index&#9;FILE&#9;file:///Users/dalaoyang/Demo/springboot_learn/springboot_upload_download/src/main/resources/templates/index.html" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553428984150" />
+    <property name="ignore_missing_gitignore" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../all_java_learn" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15332031" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/springboot2_distributed_lock_mysql/src/main/java/com/dalaoyang" />
+      <recent name="$PROJECT_DIR$/springboot2_mybatis_cascade/src/main/java/com/dalaoyang" />
+      <recent name="$PROJECT_DIR$/springboot2_mybatis_cascade/src/main/resources" />
+      <recent name="$PROJECT_DIR$/springboot2_shardingjdbc_dxfl/src/main/resources/db" />
+      <recent name="$PROJECT_DIR$/springboot2_shardingjdbc_dxfl/src/main/java/com/dalaoyang" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.dalaoyang.database" />
+      <recent name="com.dalaoyang.controller" />
+      <recent name="com.dalaoyang.repository" />
+      <recent name="com.dalaoyang.entity" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/springboot2_graylog/src/main/resources/docker" />
+      <recent name="$PROJECT_DIR$/springboot_banner/src/main/resources" />
+      <recent name="$PROJECT_DIR$/springboot_mybatis/src/main/resources/sql" />
+      <recent name="$PROJECT_DIR$/springboot_internationalization/src/main/resources/messages" />
+    </key>
+  </component>
+  <component name="RestServicesNavigator">
+    <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Found 112 services " />
+          <option name="myItemType" value="com.zhaow.restful.navigator.RestServiceStructure$RootNode" />
+        </PATH_ELEMENT>
+      </PATH>
+    </treeState>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.DemoApplication">
+    <configuration default="true" type="Applet">
+      <option name="HEIGHT" value="0" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="WIDTH" value="0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="springboot_admin_client" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2DistributedLockMysqlApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_distributed_lock_mysql" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2DistributedLockMysqlApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2ElasticjobApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_elasticjob" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2ElasticjobApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2GraylogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_graylog" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2GraylogApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2GraylogLog4jApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_graylog_log4j" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2GraylogLog4jApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2JwtApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_jwt" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2JwtApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2MongodbApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_mongodb" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2MongodbApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2MybatisCascadeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_mybatis_cascade" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2MybatisCascadeApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2NacosConfigApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_nacos_config" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2NacosConfigApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2NacosDiscoveryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="springboot2_nacos_discovery" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dalaoyang.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2NacosDiscoveryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2PrometheusApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_prometheus" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2PrometheusApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2ShardingjdbcDxflApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_shardingjdbc_dxfl" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2ShardingjdbcDxflApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2ShardingjdbcFkfbApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_shardingjdbc_fkfb" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2ShardingjdbcFkfbApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <RunnerSettings RunnerId="Debug with VisualVM">
+        <option name="visualVMId" value="42538264087631" />
+      </RunnerSettings>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2SofaLookoutApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_sofa_lookout" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2SofaLookoutApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot2WebfluxApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot2_webflux" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.Springboot2WebfluxApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootActuatorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_actuator" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootActuatorApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootAdminClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_admin_client" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootAdminClientApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootAdminServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_admin_server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootAdminServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootAopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_aop" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootAopApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootBannerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_banner" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootBannerApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootCacheApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_cache" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootCacheApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootCachecontrollerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_cachecontroller" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootCachecontrollerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootDatasourcesApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_datasources" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootDatasourcesApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootDbApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_db" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootDbApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootDruidApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_druid" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootDruidApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootDubboClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_dubbo_client" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootDubboClientApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootDubboServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_dubbo_server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootDubboServerApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootElasticsearchApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_elasticsearch" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootElasticsearchApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootErrorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_error" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootErrorApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootFreemarkerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_freemarker" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootFreemarkerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootGeneratorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_generator" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootGeneratorApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootInterceptorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_interceptor" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootInterceptorApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootInternationalizationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_internationalization" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootInternationalizationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootJdbcApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_jdbc" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootJdbcApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootJpaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_jpa" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootJpaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootJspApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_jsp" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootJspApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootLog4jApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_log4j" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootLog4jApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootLogstashApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_logstash" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootLogstashApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootLombokApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_lombok" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootLombokApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMailApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_mail" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootMailApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMongodb2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_mongodb2" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootMongodb2Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMongodbApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_mongodb" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootMongodbApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMybatisApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_mybatis" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootMybatisApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMybatisPagehelperApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_mybatis_pagehelper" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootMybatisPagehelperApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMybatisplusApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_mybatisplus" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootMybatisplusApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootRabbitmqApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_rabbitmq" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootRabbitmqApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootRedisApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_redis" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootRedisApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootScheduledApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_scheduled" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootScheduledApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootSecurityApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_security" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootSecurityApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootShiroApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_shiro" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootShiroApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootSwagger2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_swagger2" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootSwagger2Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootThymeleafApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_thymeleaf" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootThymeleafApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootTomcatApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_tomcat" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootTomcatApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootTransactionalApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_transactional" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootTransactionalApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootUploadDownloadApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_upload_download" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootUploadDownloadApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootValidatorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_validator" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootValidatorApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_web" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootWebApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootWebjarsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_webjars" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootWebjarsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootXmlApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot_xml" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dalaoyang.SpringbootXmlApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.DemoApplication" />
+      <item itemvalue="Spring Boot.Springboot2DistributedLockMysqlApplication" />
+      <item itemvalue="Spring Boot.Springboot2ElasticjobApplication" />
+      <item itemvalue="Spring Boot.Springboot2GraylogApplication" />
+      <item itemvalue="Spring Boot.Springboot2GraylogLog4jApplication" />
+      <item itemvalue="Spring Boot.Springboot2JwtApplication" />
+      <item itemvalue="Spring Boot.Springboot2MongodbApplication" />
+      <item itemvalue="Spring Boot.Springboot2MybatisCascadeApplication" />
+      <item itemvalue="Spring Boot.Springboot2NacosConfigApplication" />
+      <item itemvalue="Spring Boot.Springboot2PrometheusApplication" />
+      <item itemvalue="Spring Boot.Springboot2ShardingjdbcDxflApplication" />
+      <item itemvalue="Spring Boot.Springboot2ShardingjdbcFkfbApplication" />
+      <item itemvalue="Spring Boot.Springboot2SofaLookoutApplication" />
+      <item itemvalue="Spring Boot.Springboot2WebfluxApplication" />
+      <item itemvalue="Spring Boot.SpringbootActuatorApplication" />
+      <item itemvalue="Spring Boot.SpringbootAdminClientApplication" />
+      <item itemvalue="Spring Boot.SpringbootAdminServerApplication" />
+      <item itemvalue="Spring Boot.SpringbootAopApplication" />
+      <item itemvalue="Spring Boot.SpringbootBannerApplication" />
+      <item itemvalue="Spring Boot.SpringbootCacheApplication" />
+      <item itemvalue="Spring Boot.SpringbootCachecontrollerApplication" />
+      <item itemvalue="Spring Boot.SpringbootDatasourcesApplication" />
+      <item itemvalue="Spring Boot.SpringbootDbApplication" />
+      <item itemvalue="Spring Boot.SpringbootDruidApplication" />
+      <item itemvalue="Spring Boot.SpringbootDubboClientApplication" />
+      <item itemvalue="Spring Boot.SpringbootDubboServerApplication" />
+      <item itemvalue="Spring Boot.SpringbootElasticsearchApplication" />
+      <item itemvalue="Spring Boot.SpringbootErrorApplication" />
+      <item itemvalue="Spring Boot.SpringbootFreemarkerApplication" />
+      <item itemvalue="Spring Boot.SpringbootGeneratorApplication" />
+      <item itemvalue="Spring Boot.SpringbootInterceptorApplication" />
+      <item itemvalue="Spring Boot.SpringbootInternationalizationApplication" />
+      <item itemvalue="Spring Boot.SpringbootJdbcApplication" />
+      <item itemvalue="Spring Boot.SpringbootJpaApplication" />
+      <item itemvalue="Spring Boot.SpringbootJspApplication" />
+      <item itemvalue="Spring Boot.SpringbootLog4jApplication" />
+      <item itemvalue="Spring Boot.SpringbootLogstashApplication" />
+      <item itemvalue="Spring Boot.SpringbootLombokApplication" />
+      <item itemvalue="Spring Boot.SpringbootMailApplication" />
+      <item itemvalue="Spring Boot.SpringbootMongodb2Application" />
+      <item itemvalue="Spring Boot.SpringbootMongodbApplication" />
+      <item itemvalue="Spring Boot.SpringbootMybatisApplication" />
+      <item itemvalue="Spring Boot.SpringbootMybatisPagehelperApplication" />
+      <item itemvalue="Spring Boot.SpringbootMybatisplusApplication" />
+      <item itemvalue="Spring Boot.SpringbootRabbitmqApplication" />
+      <item itemvalue="Spring Boot.SpringbootRedisApplication" />
+      <item itemvalue="Spring Boot.SpringbootScheduledApplication" />
+      <item itemvalue="Spring Boot.SpringbootSecurityApplication" />
+      <item itemvalue="Spring Boot.SpringbootShiroApplication" />
+      <item itemvalue="Spring Boot.SpringbootSwagger2Application" />
+      <item itemvalue="Spring Boot.SpringbootThymeleafApplication" />
+      <item itemvalue="Spring Boot.SpringbootTomcatApplication" />
+      <item itemvalue="Spring Boot.SpringbootTransactionalApplication" />
+      <item itemvalue="Spring Boot.SpringbootUploadDownloadApplication" />
+      <item itemvalue="Spring Boot.SpringbootValidatorApplication" />
+      <item itemvalue="Spring Boot.SpringbootWebApplication" />
+      <item itemvalue="Spring Boot.SpringbootWebjarsApplication" />
+      <item itemvalue="Spring Boot.SpringbootXmlApplication" />
+      <item itemvalue="Spring Boot.Springboot2NacosDiscoveryApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Springboot2NacosDiscoveryApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>$USER_HOME$/.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3ecb7321-beef-474a-98c4-98ebc6840891" name="Default" comment="" />
+      <created>1520925389336</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1520925389336</updated>
+      <workItem from="1520925392872" duration="4385000" />
+      <workItem from="1520989618750" duration="7401000" />
+      <workItem from="1521728305871" duration="3088000" />
+      <workItem from="1521767069680" duration="197000" />
+      <workItem from="1522201415090" duration="1925000" />
+      <workItem from="1522203373921" duration="1434000" />
+      <workItem from="1522204966113" duration="3930000" />
+      <workItem from="1522216704932" duration="147000" />
+      <workItem from="1522216901237" duration="14000" />
+      <workItem from="1522216942547" duration="23000" />
+      <workItem from="1522216994066" duration="1135000" />
+      <workItem from="1522218193404" duration="887000" />
+      <workItem from="1522219264828" duration="1838000" />
+      <workItem from="1522316116906" duration="339000" />
+      <workItem from="1522835260734" duration="1219000" />
+      <workItem from="1522899139212" duration="4891000" />
+      <workItem from="1523078373908" duration="258000" />
+      <workItem from="1523078674951" duration="1333000" />
+      <workItem from="1523080080737" duration="6108000" />
+      <workItem from="1523149374117" duration="1147000" />
+      <workItem from="1523176845894" duration="824000" />
+      <workItem from="1523177713393" duration="2879000" />
+      <workItem from="1523255325583" duration="2816000" />
+      <workItem from="1523258200484" duration="898000" />
+      <workItem from="1523261017650" duration="750000" />
+      <workItem from="1523261793748" duration="3260000" />
+      <workItem from="1523326130252" duration="200000" />
+      <workItem from="1523326348068" duration="3907000" />
+      <workItem from="1523339142044" duration="2486000" />
+      <workItem from="1523353728943" duration="314000" />
+      <workItem from="1523354056377" duration="4792000" />
+      <workItem from="1523503081741" duration="4322000" />
+      <workItem from="1523698613166" duration="343000" />
+      <workItem from="1523698970906" duration="1802000" />
+      <workItem from="1524013866879" duration="5730000" />
+      <workItem from="1524099949987" duration="348000" />
+      <workItem from="1524100304257" duration="2066000" />
+      <workItem from="1524102399456" duration="1476000" />
+      <workItem from="1524103890134" duration="2174000" />
+      <workItem from="1524623926128" duration="6718000" />
+      <workItem from="1524827425432" duration="3429000" />
+      <workItem from="1524877826524" duration="3000" />
+      <workItem from="1524898062108" duration="2574000" />
+      <workItem from="1524901828556" duration="79000" />
+      <workItem from="1524901928189" duration="3291000" />
+      <workItem from="1524906844477" duration="5587000" />
+      <workItem from="1524991313189" duration="270000" />
+      <workItem from="1524991589040" duration="2861000" />
+      <workItem from="1525090943256" duration="2786000" />
+      <workItem from="1525173565583" duration="5263000" />
+      <workItem from="1525223952654" duration="6699000" />
+      <workItem from="1525231354044" duration="15735000" />
+      <workItem from="1525328262164" duration="152000" />
+      <workItem from="1525328446446" duration="25000" />
+      <workItem from="1525328504547" duration="153000" />
+      <workItem from="1525328690117" duration="1883000" />
+      <workItem from="1525398313971" duration="1327000" />
+      <workItem from="1525412680359" duration="806000" />
+      <workItem from="1525413562245" duration="8425000" />
+      <workItem from="1525500964568" duration="3560000" />
+      <workItem from="1525535225254" duration="1282000" />
+      <workItem from="1525539019713" duration="58000" />
+      <workItem from="1525678344229" duration="1079000" />
+      <workItem from="1525685427979" duration="519000" />
+      <workItem from="1525686068634" duration="404000" />
+      <workItem from="1525686538274" duration="2303000" />
+      <workItem from="1527145890072" duration="550000" />
+      <workItem from="1527500694923" duration="2513000" />
+      <workItem from="1527557359847" duration="1017000" />
+      <workItem from="1527562219138" duration="7563000" />
+      <workItem from="1527582370844" duration="380000" />
+      <workItem from="1528939464551" duration="649000" />
+      <workItem from="1528940794166" duration="6382000" />
+      <workItem from="1529647437861" duration="425000" />
+      <workItem from="1529647892588" duration="484000" />
+      <workItem from="1529648404229" duration="5040000" />
+      <workItem from="1529653550474" duration="3578000" />
+      <workItem from="1530701341036" duration="695000" />
+      <workItem from="1531290739701" duration="15000" />
+      <workItem from="1531811086876" duration="2935000" />
+      <workItem from="1531815794889" duration="921000" />
+      <workItem from="1531906880222" duration="899000" />
+      <workItem from="1531971404152" duration="1200000" />
+      <workItem from="1532056054928" duration="9194000" />
+      <workItem from="1532074167345" duration="786000" />
+      <workItem from="1535811747615" duration="163000" />
+      <workItem from="1535811916183" duration="8083000" />
+      <workItem from="1536478681643" duration="9905000" />
+      <workItem from="1537074718353" duration="838000" />
+      <workItem from="1540893580112" duration="2057000" />
+      <workItem from="1541847273793" duration="2625000" />
+      <workItem from="1542447462883" duration="768000" />
+      <workItem from="1544845660170" duration="1390000" />
+      <workItem from="1547086259974" duration="1215000" />
+      <workItem from="1547104488644" duration="831000" />
+      <workItem from="1547198845028" duration="3525000" />
+      <workItem from="1547204034892" duration="695000" />
+      <workItem from="1548320720989" duration="170000" />
+      <workItem from="1548386113647" duration="1323000" />
+      <workItem from="1548495085316" duration="5128000" />
+      <workItem from="1548743438659" duration="405000" />
+      <workItem from="1548743891926" duration="4807000" />
+      <workItem from="1548749323286" duration="8728000" />
+      <workItem from="1548769382762" duration="20164000" />
+      <workItem from="1548897573999" duration="4680000" />
+      <workItem from="1548903547484" duration="80000" />
+      <workItem from="1549006132523" duration="2002000" />
+      <workItem from="1549365650945" duration="166000" />
+      <workItem from="1549934236646" duration="201000" />
+      <workItem from="1549934454445" duration="14113000" />
+      <workItem from="1549967478709" duration="1332000" />
+      <workItem from="1550023881644" duration="3783000" />
+      <workItem from="1550115005291" duration="1135000" />
+      <workItem from="1550124765384" duration="733000" />
+      <workItem from="1551089297961" duration="1422000" />
+      <workItem from="1551412215782" duration="4293000" />
+      <workItem from="1551793220710" duration="5956000" />
+      <workItem from="1551878806954" duration="1151000" />
+      <workItem from="1551880130274" duration="6411000" />
+      <workItem from="1551939607612" duration="3241000" />
+      <workItem from="1552150855096" duration="1569000" />
+      <workItem from="1552197497821" duration="1087000" />
+      <workItem from="1552363425174" duration="1747000" />
+      <workItem from="1552386407475" duration="563000" />
+      <workItem from="1552386994333" duration="1455000" />
+      <workItem from="1552629147951" duration="826000" />
+      <workItem from="1552966766052" duration="425000" />
+      <workItem from="1552967217249" duration="5562000" />
+      <workItem from="1553003341623" duration="3462000" />
+      <workItem from="1553138072778" duration="6739000" />
+      <workItem from="1553154329232" duration="948000" />
+      <workItem from="1553428302979" duration="783000" />
+      <workItem from="1553652571660" duration="2275000" />
+      <workItem from="1554879810805" duration="2644000" />
+      <workItem from="1555567042872" duration="360000" />
+      <workItem from="1555568049929" duration="3172000" />
+      <workItem from="1555911624274" duration="4570000" />
+      <workItem from="1555917044930" duration="462000" />
+      <workItem from="1555917530749" duration="3129000" />
+      <workItem from="1562291854441" duration="1813000" />
+      <workItem from="1563522449997" duration="1664000" />
+      <workItem from="1566827480671" duration="2192000" />
+      <workItem from="1566830019536" duration="136000" />
+      <workItem from="1566830191996" duration="115000" />
+      <workItem from="1566909735814" duration="2031000" />
+      <workItem from="1567860882252" duration="1109000" />
+      <workItem from="1567862088047" duration="28000" />
+      <workItem from="1567862145644" duration="1639000" />
+      <workItem from="1567863825114" duration="429000" />
+      <workItem from="1567864285715" duration="2605000" />
+      <workItem from="1567925086466" duration="1416000" />
+      <workItem from="1568540259166" duration="624000" />
+      <workItem from="1568545530010" duration="1428000" />
+      <workItem from="1568901856671" duration="566000" />
+      <workItem from="1569243040263" duration="38000" />
+    </task>
+    <task id="LOCAL-00034" summary="springboot_shiro">
+      <created>1525251998851</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1525251998851</updated>
+    </task>
+    <task id="LOCAL-00035" summary="springboot_shiro">
+      <created>1525254116728</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1525254116728</updated>
+    </task>
+    <task id="LOCAL-00036" summary="springboot_elasticsearch">
+      <created>1525420395490</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1525420395490</updated>
+    </task>
+    <task id="LOCAL-00037" summary="springboot_elasticsearch">
+      <created>1525421256443</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1525421256443</updated>
+    </task>
+    <task id="LOCAL-00038" summary="springboot_mongodb">
+      <created>1525505951036</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1525505951036</updated>
+    </task>
+    <task id="LOCAL-00039" summary="readme">
+      <created>1525537578072</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1525537578072</updated>
+    </task>
+    <task id="LOCAL-00040" summary="springboot_mongodb">
+      <created>1525678398943</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1525678398943</updated>
+    </task>
+    <task id="LOCAL-00041" summary="springboot_lombok">
+      <created>1525688757027</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1525688757027</updated>
+    </task>
+    <task id="LOCAL-00042" summary="springboot_transactional">
+      <created>1527502463302</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1527502463302</updated>
+    </task>
+    <task id="LOCAL-00043" summary="springboot_transactional">
+      <created>1527502553263</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1527502553263</updated>
+    </task>
+    <task id="LOCAL-00044" summary="springboot_cache">
+      <created>1527575708708</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1527575708708</updated>
+    </task>
+    <task id="LOCAL-00045" summary="springboot_cache">
+      <created>1527575732508</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1527575732508</updated>
+    </task>
+    <task id="LOCAL-00046" summary="springboot_cache">
+      <created>1527575764706</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1527575764706</updated>
+    </task>
+    <task id="LOCAL-00047" summary="springboot_dubbo">
+      <created>1528942342341</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1528942342341</updated>
+    </task>
+    <task id="LOCAL-00048" summary="springboot_dubbo">
+      <created>1528942359264</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1528942359264</updated>
+    </task>
+    <task id="LOCAL-00049" summary="springboot_dubbo">
+      <created>1528943190833</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1528943190833</updated>
+    </task>
+    <task id="LOCAL-00050" summary="springboot_dubbo">
+      <created>1528943257649</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1528943257650</updated>
+    </task>
+    <task id="LOCAL-00051" summary="springboot">
+      <created>1529656931563</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1529656931564</updated>
+    </task>
+    <task id="LOCAL-00052" summary="springboot">
+      <created>1529656995240</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1529656995240</updated>
+    </task>
+    <task id="LOCAL-00053" summary="springboot">
+      <created>1529657012919</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1529657012920</updated>
+    </task>
+    <task id="LOCAL-00054" summary="springboot">
+      <created>1529657129314</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1529657129314</updated>
+    </task>
+    <task id="LOCAL-00055" summary="springboot_mybatisplus">
+      <created>1532067258413</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1532067258414</updated>
+    </task>
+    <task id="LOCAL-00056" summary="springboot_aop">
+      <created>1536495075194</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1536495075195</updated>
+    </task>
+    <task id="LOCAL-00057" summary="springboot2_nacos">
+      <created>1547200884748</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1547200884748</updated>
+    </task>
+    <task id="LOCAL-00058" summary="springboot2_nacos">
+      <created>1547202566681</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1547202566681</updated>
+    </task>
+    <task id="LOCAL-00059" summary="springboot2_nacos">
+      <created>1548500874839</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1548500874840</updated>
+    </task>
+    <task id="LOCAL-00060" summary="springboot2_nacos">
+      <created>1548500895762</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1548500895762</updated>
+    </task>
+    <task id="LOCAL-00061" summary="springboot2_nacos">
+      <created>1548743509950</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1548743509950</updated>
+    </task>
+    <task id="LOCAL-00062" summary="springboot2_shardingjdbc_fkfb">
+      <created>1548831870185</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1548831870185</updated>
+    </task>
+    <task id="LOCAL-00063" summary="sql">
+      <created>1548835208255</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1548835208255</updated>
+    </task>
+    <task id="LOCAL-00064" summary="delete code">
+      <created>1548900296431</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1548900296432</updated>
+    </task>
+    <task id="LOCAL-00065" summary="markdown更新">
+      <created>1549009488876</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1549009488877</updated>
+    </task>
+    <task id="LOCAL-00066" summary="springboot_shardingjdbc_dxfl">
+      <created>1549942521378</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1549942521382</updated>
+    </task>
+    <task id="LOCAL-00067" summary="springboot_shardingjdbc_dxfl">
+      <created>1549942893370</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1549942893370</updated>
+    </task>
+    <task id="LOCAL-00068" summary="springboot_shardingjdbc_dxfl">
+      <created>1549942980256</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1549942980256</updated>
+    </task>
+    <task id="LOCAL-00069" summary="add init sql for springboot2_shardingjdbc_dxfl">
+      <created>1549952004494</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1549952004495</updated>
+    </task>
+    <task id="LOCAL-00070" summary="delete useless code">
+      <created>1549952314428</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1549952314428</updated>
+    </task>
+    <task id="LOCAL-00071" summary="delete useless code">
+      <created>1549953691582</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1549953691582</updated>
+    </task>
+    <task id="LOCAL-00072" summary="springboot2_elasticjob">
+      <created>1550027467096</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1550027467098</updated>
+    </task>
+    <task id="LOCAL-00073" summary="springboot_logstash">
+      <created>1550116069696</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1550116069699</updated>
+    </task>
+    <task id="LOCAL-00074" summary="update readme.md">
+      <created>1550116097265</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1550116097266</updated>
+    </task>
+    <task id="LOCAL-00075" summary="add pom">
+      <created>1551089977659</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1551089977663</updated>
+    </task>
+    <task id="LOCAL-00076" summary="springboot_logstash">
+      <created>1551422075051</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1551422075052</updated>
+    </task>
+    <task id="LOCAL-00077" summary="springboot2_elasticjob">
+      <created>1551797236554</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1551797236554</updated>
+    </task>
+    <task id="LOCAL-00078" summary="springboot2_prometheus">
+      <created>1551892318730</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1551892318733</updated>
+    </task>
+    <task id="LOCAL-00079" summary="springboot2_sofaloogout">
+      <created>1552152507395</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1552152507397</updated>
+    </task>
+    <task id="LOCAL-00080" summary="springboot2_mybatis_cascade">
+      <created>1553148407166</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1553148407166</updated>
+    </task>
+    <task id="LOCAL-00081" summary="springboot2_mybatis_cascade">
+      <created>1553150924483</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1553150924483</updated>
+    </task>
+    <task id="LOCAL-00082" summary="update parent pom">
+      <created>1553428442076</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1553428442076</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Springboot2ShardingJdbcFkfbApplicationTests_save - 2019.01.29 at 19h 16m 51s.xml">
+      <configuration name="Springboot2ShardingJdbcFkfbApplicationTests.save" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Springboot2ShardingJdbcFkfbApplicationTests_save - 2019.01.29 at 19h 17m 15s.xml">
+      <configuration name="Springboot2ShardingJdbcFkfbApplicationTests.save" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/springboot2_appllo" />
+      <path value="$PROJECT_DIR$/springboot2_mongodb" />
+      <path value="$PROJECT_DIR$/springboot2_nacos_config" />
+      <path value="$PROJECT_DIR$/springboot2_nacos_discovery" />
+      <path value="$PROJECT_DIR$/springboot2_shardingjdbc" />
+      <path value="$PROJECT_DIR$/springboot2_shardingjdbc_fkfb" />
+    </ignored-roots>
+    <MESSAGE value="readme" />
+    <MESSAGE value="springboot_mongodb" />
+    <MESSAGE value="springboot_lombok" />
+    <MESSAGE value="springboot_transactional" />
+    <MESSAGE value="springboot_cache" />
+    <MESSAGE value="springboot_dubbo" />
+    <MESSAGE value="springboot" />
+    <MESSAGE value="springboot_mybatisplus" />
+    <MESSAGE value="springboot_aop" />
+    <MESSAGE value="springboot2_nacos" />
+    <MESSAGE value="springboot2_shardingjdbc_fkfb" />
+    <MESSAGE value="sql" />
+    <MESSAGE value="delete code" />
+    <MESSAGE value="markdown更新" />
+    <MESSAGE value="springboot_shardingjdbc_dxfl" />
+    <MESSAGE value="add init sql for springboot2_shardingjdbc_dxfl" />
+    <MESSAGE value="delete useless code" />
+    <MESSAGE value="update readme.md" />
+    <MESSAGE value="add pom" />
+    <MESSAGE value="springboot_logstash" />
+    <MESSAGE value="springboot2_elasticjob" />
+    <MESSAGE value="springboot2_prometheus" />
+    <MESSAGE value="springboot2_sofaloogout" />
+    <MESSAGE value="springboot2_mybatis_cascade" />
+    <MESSAGE value="update parent pom" />
+    <option name="LAST_COMMIT_MESSAGE" value="update parent pom" />
+  </component>
+</project>

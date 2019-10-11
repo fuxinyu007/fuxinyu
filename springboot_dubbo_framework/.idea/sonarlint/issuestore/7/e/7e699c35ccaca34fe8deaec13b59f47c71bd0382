@@ -1,0 +1,17 @@
+
+ƒsquid:UselessImportCheck"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8¤™çØ-
+isquid:CommentedOutCodeLine."<This block of commented-out lines of code should be removed.(Ëı÷ÿ8»¬ÑˆØ-
+isquid:CommentedOutCodeLine3"<This block of commented-out lines of code should be removed.(Òá8»¬ÑˆØ-
+“squid:S1488V"pImmediately return this expression instead of assigning it to the temporary variable "simpleAuthenticationInfo".(ÌÃ±øÿÿÿÿ8Š”ªÿ×-
+^squid:S1854S"@Remove this useless assignment to local variable "userPassword".(æÆÓ¾8øç¿‰Ø-
+nsquid:CommentedOutCodeLine*"<This block of commented-out lines of code should be removed.(¡¶Ñµøÿÿÿÿ8»¬ÑˆØ-
+isquid:CommentedOutCodeLine,"<This block of commented-out lines of code should be removed.(£Ì¦ş8»¬ÑˆØ-
+nsquid:CommentedOutCodeLine1"<This block of commented-out lines of code should be removed.(–ª®ùÿÿÿÿ8»¬ÑˆØ-
+¶%squid:RedundantThrowsDeclarationCheckE"yRemove the declaration of thrown exception 'org.apache.shiro.authc.AuthenticationException' which is a runtime exception.(¡ïË»ùÿÿÿÿ8Çç¬ÿ×-
+ssquid:UselessImportCheck"HRemove this unused import 'com.fuxinyu.service.login.IUserLoginService'.(õòˆó8çê±‡Ø-
+Osquid:S1481S"1Remove this unused "userPassword" local variable.(æÆÓ¾8øç¿‰Ø-
+lsquid:S1858V"I"getUserPassword" returns a string, there's no need to call "toString()".(ÌÃ±øÿÿÿÿ8ĞÇ€Ø-
+squid:UselessImportCheck"QRemove this unused import 'org.springframework.context.annotation.Configuration'.(¬²Úäşÿÿÿÿ8âåŠ‚Ø-
+zsquid:UselessImportCheck"JRemove this unused import 'com.alibaba.dubbo.config.annotation.Reference'.(”Ì‡Œúÿÿÿÿ8çê±‡Ø-
+Nsquid:S1068"0Remove this unused "dubboSupport" private field.(¯éÌå8Àû¸‡Ø-
+nsquid:UselessImportCheck"CRemove this unused import 'org.apache.shiro.util.SimpleByteSource'.(Êçâí8È•ôÊÚ-

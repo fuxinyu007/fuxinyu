@@ -1,0 +1,20 @@
+server:
+  port: 8082
+#servlet:
+#  context-path: /fuxinyu
+tomcat:
+  uri-encoding: utf-8
+
+
+
+spring:
+  dubbo:
+    application:
+      name: framework_web
+    registry:
+      address: zookeeper://127.0.0.1:2181
+    scan: com.fuxinyu
+    consumer:
+      timeout: 1000
+      check: true
+      retries: 0
